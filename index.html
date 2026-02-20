@@ -194,26 +194,24 @@
         // Inicializar
         createStars();
         createParticles();
+    
+// Controle do modal de vídeo (YouTube Embed)
+function openVideoModal() {
+    const videoModal = document.getElementById('videoModal');
+    const iframe = document.getElementById('youtubePlayer');
+    // URL de embed do trailer oficial com parâmetros corretos
+    iframe.src = "https://www.youtube-nocookie.com/embed/zSWdZVtXT7E?autoplay=1&rel=0&modestbranding=1&playsinline=1";
+    videoModal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
 
-        // Controle do modal de vídeo
-        function openVideoModal() {
-            const videoModal = document.getElementById('videoModal');
-            const video = document.getElementById('trailerVideo');
-            videoModal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        // Opcional: iniciar vídeo automaticamente
-            // video.play();
-        }
-
-        function closeVideoModal() {
-            const videoModal = document.getElementById('videoModal');
-            const video = document.getElementById('trailerVideo');
-            videoModal.classList.remove('active');
-            document.body.style.overflow = 'auto';
-            // Pausa o vídeo ao fechar
-            video.pause();
-            video.currentTime = 0;
-        }
+function closeVideoModal() {
+    const videoModal = document.getElementById('videoModal');
+    const iframe = document.getElementById('youtubePlayer');
+    videoModal.classList.remove('active');
+    iframe.src = ""; // Para o vídeo ao fechar
+    document.body.style.overflow = 'auto';
+}
         // Fechar modal ao clicar fora
         document.getElementById('videoModal').addEventListener('click', function(e) {
             if (e.target === this) {
@@ -230,4 +228,5 @@
         });
     </script>
 </body>
+
 </html>
